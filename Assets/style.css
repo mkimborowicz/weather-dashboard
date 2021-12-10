@@ -1,0 +1,54 @@
+* {
+    font-family: 'Barlow', sans-serif;
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+header {
+    text-align: center;
+    background: rgb(108, 126, 100);
+    padding: 15px;
+}
+
+h2 {
+    font-family: 'Barlow', sans-serif;
+}
+
+aside {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+}
+
+.side-bar {
+    padding: 10px;
+    font-size: 18px;
+}
+
+#city-input {
+    margin-top: 8px;
+    width: 100%;
+    font-size: 18px;
+}
+
+button {
+    margin-top: 8px;
+    width: 100%;
+    border: solid 2px rgb(108, 126, 100);
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: rgb(108, 126, 100);
+}
+
+main {
+    margin-left: 200px;
+}
+
+#current, #forecast {
+    border: solid 1px black;
+    margin: 15px;
+    padding: 5px;
+}
