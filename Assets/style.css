@@ -52,3 +52,7 @@ main {
     margin: 15px;
     padding: 5px;
 }
+
+.forecast-cards {
+    display: flex;
+}
