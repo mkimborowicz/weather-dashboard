@@ -7,7 +7,7 @@
 header {
     text-align: center;
     background: rgb(108, 126, 100);
-    padding: 15px;
+    padding: 10px;
 }
 
 h2 {
@@ -16,7 +16,7 @@ h2 {
 
 aside {
     height: 100%;
-    width: 200px;
+    width: 225px;
     position: fixed;
 }
 
@@ -27,12 +27,12 @@ aside {
 
 #city-input {
     margin-top: 8px;
+    margin-bottom: 8px;
     width: 100%;
     font-size: 18px;
 }
 
 button {
-    margin-top: 8px;
     width: 100%;
     border: solid 2px rgb(108, 126, 100);
     font-size: 18px;
@@ -44,15 +44,20 @@ button:hover {
 }
 
 main {
-    margin-left: 200px;
+    margin-left: 225px;
 }
 
 #current, #forecast {
-    border: solid 1px black;
     margin: 15px;
     padding: 5px;
 }
 
 .forecast-cards {
     display: flex;
+}
+
+
+li {
+    list-style: none;
+    line-height: 40px;
 }
