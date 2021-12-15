@@ -39,7 +39,7 @@ function oneCall(weatherData) {
     })
     .then(function (data) {
       currentWeather(data.current, cityName);
-      // forecastWeather(data.daily, cityName);
+      forecastWeather(data.daily, cityName);
     });
 }
 
@@ -80,5 +80,39 @@ function currentWeather(current, city) {
   currentContainer.append(cardTitle, card);
 }
 
+function forecastWeather(daily, city) {
+  console.log(daily);
+
+  for (let i=0; i<6; i++) {
+    var icon = daily[i].weather[0].icon;
+    var temp = daily[i].temp.day;
+    var wind = daily[i].wind_speed;
+    var humidity = daily[i].humidity;
+    var date = moment().add(1, "days").format("MM/D/YY");
+    console.log(wind);
+  
+  var card = document.createElement("div");
+  var cardHeader = document.createElement("div");
+  var listGroup = document.createElement("ul");
+  var tempEl = document.createElement("li");
+  var windEl = document.createElement("li");
+  var humidityEl = document.createElement("li");
+  var iconEl = document.createElement("img");
+
+  card.setAttribute("class", "card");
+  cardHeader.setAttribute("class", "card-header");
+
+  cardHeader.textContent = date;
+  tempEl.textContent = "Temp: " + temp + "°F";
+  windEl.textContent = "Wind Speed: " + wind + " MPH";
+  humidityEl.textContent = "Humidity: " + humidity + "%";
+
+  listGroup.append(tempEl, windEl, humidityEl);
+  card.append(cardHeader, listGroup);
+}
+  var cardTitle = document.createElement("h3");
+  cardTitle.textContent = "5 Day Forecast";
+  currentContainer.append(cardTitle, card);
+}
 
 searchBtn.addEventListener("submit", handleFormSubmit);
