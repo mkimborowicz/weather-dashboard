@@ -70,7 +70,7 @@ function currentWeather(current, city) {
   cardTitle.textContent = "Current Weather";
   cardHeader.textContent = city + " - " + moment().format("MMMM Do YYYY");
   tempEl.textContent = "Temp: " + temp + "°F";
-  windEl.textContent = "Wind Speed: " + wind + " MPH";
+  windEl.textContent = "Wind: " + wind + " MPH";
   humidityEl.textContent = "Humidity: " + humidity + "%";
   uvEl.textContent = "UV Index: " + uv;
 
@@ -82,8 +82,12 @@ function currentWeather(current, city) {
 
 function forecastWeather(daily, city) {
   console.log(daily);
+  forecastContainer.innerHTML = "";
+var cardTitle = document.createElement("h3");
+cardTitle.textContent = "5 Day Forecast";
+forecastContainer.append(cardTitle)
 
-  for (let i=0; i<6; i++) {
+  for (let i=0; i<5; i++) {
     var icon = daily[i].weather[0].icon;
     var temp = daily[i].temp.day;
     var wind = daily[i].wind_speed;
@@ -99,20 +103,22 @@ function forecastWeather(daily, city) {
   var humidityEl = document.createElement("li");
   var iconEl = document.createElement("img");
 
-  card.setAttribute("class", "card");
+  card.setAttribute("class", "card")
+  card.setAttribute("class", "forecast")
+  card.setAttribute("style", "max-width: 200px")
   cardHeader.setAttribute("class", "card-header");
 
   cardHeader.textContent = date;
   tempEl.textContent = "Temp: " + temp + "°F";
-  windEl.textContent = "Wind Speed: " + wind + " MPH";
+  windEl.textContent = "Wind: " + wind + " MPH";
   humidityEl.textContent = "Humidity: " + humidity + "%";
-
+  
   listGroup.append(tempEl, windEl, humidityEl);
   card.append(cardHeader, listGroup);
-}
-  var cardTitle = document.createElement("h3");
-  cardTitle.textContent = "5 Day Forecast";
-  currentContainer.append(cardTitle, card);
+  
+
+ forecastContainer.append(card);
 }
 
+}
 searchBtn.addEventListener("submit", handleFormSubmit);
