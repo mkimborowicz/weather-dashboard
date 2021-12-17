@@ -74,51 +74,56 @@ function currentWeather(current, city) {
   humidityEl.textContent = "Humidity: " + humidity + "%";
   uvEl.textContent = "UV Index: " + uv;
 
+  iconEl.src = "http://openweathermap.org/img/w/" + icon + ".png";
+
   listGroup.append(tempEl, windEl, humidityEl, uvEl);
   card.append(cardHeader, listGroup);
+  cardHeader.append(iconEl);
 
   currentContainer.append(cardTitle, card);
+
+  console.log(icon);
 }
 
 function forecastWeather(daily, city) {
   console.log(daily);
   forecastContainer.innerHTML = "";
-var cardTitle = document.createElement("h3");
-cardTitle.textContent = "5 Day Forecast";
-forecastContainer.append(cardTitle)
+  var cardTitle = document.createElement("h3");
+  cardTitle.textContent = "5 Day Forecast";
+  forecastContainer.append(cardTitle);
 
-  for (let i=0; i<5; i++) {
+  for (let i = 0; i < 5; i++) {
     var icon = daily[i].weather[0].icon;
     var temp = daily[i].temp.day;
     var wind = daily[i].wind_speed;
     var humidity = daily[i].humidity;
     var date = moment().add(1, "days").format("MM/D/YY");
     console.log(wind);
-  
-  var card = document.createElement("div");
-  var cardHeader = document.createElement("div");
-  var listGroup = document.createElement("ul");
-  var tempEl = document.createElement("li");
-  var windEl = document.createElement("li");
-  var humidityEl = document.createElement("li");
-  var iconEl = document.createElement("img");
 
-  card.setAttribute("class", "card")
-  card.setAttribute("class", "forecast")
-  card.setAttribute("style", "max-width: 200px")
-  cardHeader.setAttribute("class", "card-header");
+    var card = document.createElement("div");
+    var cardHeader = document.createElement("div");
+    var listGroup = document.createElement("ul");
+    var tempEl = document.createElement("li");
+    var windEl = document.createElement("li");
+    var humidityEl = document.createElement("li");
+    var iconEl = document.createElement("img");
 
-  cardHeader.textContent = date;
-  tempEl.textContent = "Temp: " + temp + "°F";
-  windEl.textContent = "Wind: " + wind + " MPH";
-  humidityEl.textContent = "Humidity: " + humidity + "%";
-  
-  listGroup.append(tempEl, windEl, humidityEl);
-  card.append(cardHeader, listGroup);
-  
+    card.setAttribute("class", "card");
+    card.setAttribute("class", "forecast");
+    card.setAttribute("style", "max-width: 200px");
+    cardHeader.setAttribute("class", "card-header");
 
- forecastContainer.append(card);
-}
+    cardHeader.textContent = date;
+    tempEl.textContent = "Temp: " + temp + "°F";
+    windEl.textContent = "Wind: " + wind + " MPH";
+    humidityEl.textContent = "Humidity: " + humidity + "%";
 
+    iconEl.src = "http://openweathermap.org/img/w/" + icon + ".png";
+
+    cardHeader.append(iconEl);
+    listGroup.append(tempEl, windEl, humidityEl);
+    card.append(cardHeader, listGroup);
+    forecastContainer.append(card);
+  }
 }
 searchBtn.addEventListener("submit", handleFormSubmit);
